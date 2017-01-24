@@ -2,5 +2,5 @@
 *.class
 **/.DS_Store
 *.iml
-data/index/*
+data/index/*.idx
 out/*
