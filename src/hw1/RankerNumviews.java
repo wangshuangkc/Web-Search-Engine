@@ -42,7 +42,7 @@ public class RankerNumviews extends Ranker {
     return new ScoredDocument(query._query, doc, score);
   }
 
-  private double scoreDocument(Document doc) {
+  public double scoreDocument(Document doc) {
     return doc.getNumViews();
   }
 }

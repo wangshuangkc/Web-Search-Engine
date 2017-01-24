@@ -12,3 +12,6 @@ Start Server:
 
 Run Query:
 <pre>curl 'localhost:25801/search?query=%22web%20search%22&ranker=fullscan'</pre>
+
+Generate Ranking Result e.g.:
+<pre>curl 'localhost:25801/search?query=bing&ranker=cosine' >> hw1.1-vsm.tsv</pre>

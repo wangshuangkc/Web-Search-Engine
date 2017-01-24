@@ -42,7 +42,7 @@ public class RankerCosine extends Ranker {
     return new ScoredDocument(query._query, doc, score);
   }
 
-  private double scoreDocument(Query query, Document doc) {
+  public double scoreDocument(Query query, Document doc) {
     Vector<String> queryTokens = query._tokens;
     Map<String, Integer> queryVec = getVec(queryTokens);
 
