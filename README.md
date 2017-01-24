@@ -1,14 +1,16 @@
  # Web-Search-Engine
 Homework for Web Search Engine Course
 
-Homework 1:
-1. Implement ranking signals:
+**Homework 1:**
+
+Implement ranking signals:
 - cosine similarity (vector space model)
 - query likelihood (language model)
 - phrase
 - numviews
 - simple linear model
-2. Evaluation metrics
+
+Evaluation metrics
 - Precision at 1, 5 and 10
 - Recall at 1, 5, and 10
 - F0.5 at 1, 5, and 10
@@ -17,20 +19,26 @@ Homework 1:
 - NDCG at 1, 5, and 10
 - Reciprocal rank
 
-Homework 2:
-1. Implement indexers
+**Homework 2:**
+
+Implement indexers
 - Doc only
 - Occurance
 - Compressed
-2. Concreate Ranker
+
+Concreate Ranker
 - RankerFavorite
-3. Improve document and query representations
+
+Improve document and query representations
 - DocumentIndexed
 - QueryPhrase
 
-Homework 3:
-1.  Compute document qualities
+**Homework 3:**
+
+Compute document qualities
 - PageRank
 - Numviews
-2. Spearman's rank correlation coefficient
-3. Pseudo-Relevance Feedback
+
+Spearman's rank correlation coefficient
+
+Pseudo-Relevance Feedback
