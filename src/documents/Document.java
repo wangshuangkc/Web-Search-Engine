@@ -1,4 +1,4 @@
-package hw1;
+package documents;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author fdiaz
  * @author congyu
  */
-class Document implements Serializable {
+public class Document implements Serializable {
   private static final long serialVersionUID = -539495106357836976L;
 
   public int _docid;

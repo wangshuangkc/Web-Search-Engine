@@ -1,6 +1,10 @@
-package hw1;
+package indexers;
 
-import hw1.SearchEngine.Options;
+import documents.Document;
+import documents.DocumentFull;
+import engine.SearchEngine;
+import engine.SearchEngine.Options;
+import query.Query;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -23,7 +27,7 @@ import java.util.Vector;
  * @author fdiaz
  * @author congyu
  */
-class IndexerFullScan extends Indexer implements Serializable {
+public class IndexerFullScan extends Indexer implements Serializable {
   private static final long serialVersionUID = 1077111905740085030L;
 
   // Maps each term to their integer representation

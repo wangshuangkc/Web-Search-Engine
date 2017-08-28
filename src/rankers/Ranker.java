@@ -1,8 +1,12 @@
-package hw1;
-import java.util.Vector;
+package rankers;
 
-import hw1.QueryHandler.CgiArguments;
-import hw1.SearchEngine.Options;
+import documents.ScoredDocument;
+import engine.SearchEngine.Options;
+import indexers.Indexer;
+import query.Query;
+import query.QueryHandler.CgiArguments;
+
+import java.util.Vector;
 
 /**
  * This is the abstract Ranker class for all concrete Ranker implementations.
@@ -10,9 +14,9 @@ import hw1.SearchEngine.Options;
  * Use {@link Ranker.Factory} to create your concrete Ranker implementation. Do
  * NOT change the interface in this class!
  *
- * In HW1: {@link RankerFullScan} is the instructor's simple ranker and students
+ * In HW1: {@link RankerFullScan} is the instructor's simple rankers and students
  * implement four additional concrete Rankers. {@link RankerLinear} is the
- * template for the Linear ranker and students must use the four beta fields
+ * template for the Linear rankers and students must use the four beta fields
  * to combine the four signals.
  *
  * @author congyu
@@ -50,8 +54,7 @@ public abstract class Ranker {
    * provided {@code arguments}.
    */
   public static class Factory {
-    public static Ranker getRankerByArguments(CgiArguments arguments,
-                                              Options options, Indexer indexer) {
+    public static Ranker getRankerByArguments(CgiArguments arguments, Options options, Indexer indexer) {
       switch (arguments._rankerType) {
         case FULLSCAN:
           return new RankerFullScan(options, arguments, indexer);

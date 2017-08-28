@@ -1,4 +1,4 @@
-package hw1;
+package query;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,7 +8,11 @@ import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import hw1.SearchEngine.Options;
+import documents.ScoredDocument;
+import engine.SearchEngine;
+import engine.SearchEngine.Options;
+import indexers.Indexer;
+import rankers.Ranker;
 
 /**
  * Handles each incoming query, students do not need to change this class except
@@ -19,7 +23,7 @@ import hw1.SearchEngine.Options;
  * @author congyu
  * @author fdiaz
  */
-class QueryHandler implements HttpHandler {
+public class QueryHandler implements HttpHandler {
 
   /**
    * CGI arguments provided by the user through the URL. This will determine
@@ -32,7 +36,7 @@ class QueryHandler implements HttpHandler {
     // How many results to return
     private int _numResults = 10;
 
-    // The type of the ranker we will be using.
+    // The type of the rankers we will be using.
     public enum RankerType {
       NONE,
       FULLSCAN,
@@ -68,7 +72,7 @@ class QueryHandler implements HttpHandler {
           } catch (NumberFormatException e) {
             // Ignored, search engine should never fail upon invalid user input.
           }
-        } else if (key.equals("ranker")) {
+        } else if (key.equals("rankers")) {
           try {
             _rankerType = RankerType.valueOf(val.toUpperCase());
           } catch (IllegalArgumentException e) {
@@ -144,7 +148,7 @@ class QueryHandler implements HttpHandler {
       respondWithMsg(exchange, "No query is given!");
     }
 
-    // Create the ranker.
+    // Create the rankers.
     Ranker ranker = Ranker.Factory.getRankerByArguments(
         cgiArgs, SearchEngine.OPTIONS, _indexer);
     if (ranker == null) {

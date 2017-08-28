@@ -1,8 +1,10 @@
-package hw1;
+package indexers;
 
 import java.io.IOException;
 
-import hw1.SearchEngine.Options;
+import documents.Document;
+import engine.SearchEngine.Options;
+import query.Query;
 
 /**
  * This is the abstract Indexer class for all concrete Indexer implementations.

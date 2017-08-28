@@ -1,4 +1,4 @@
-package hw1;
+package rankers;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -6,21 +6,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-import hw1.QueryHandler.CgiArguments;
-import hw1.SearchEngine.Options;
+import documents.Document;
+import documents.DocumentFull;
+import documents.ScoredDocument;
+import indexers.Indexer;
+import query.Query;
+import query.QueryHandler.CgiArguments;
+import engine.SearchEngine.Options;
 
-/**
- * @CS2580: Use this template to implement the query likelihood ranker for HW1.
- *
- * @author congyu
- * @author fdiaz
- */
 public class RankerQl extends Ranker {
 
   public static final double LAMBDA = 0.5;
 
-  public RankerQl(Options options,
-                  CgiArguments arguments, Indexer indexer) {
+  public RankerQl(Options options, CgiArguments arguments, Indexer indexer) {
     super(options, arguments, indexer);
     System.out.println("Using Ranker: " + this.getClass().getSimpleName());
   }
@@ -88,7 +86,7 @@ public class RankerQl extends Ranker {
 
   public static void main(String[] args) throws IOException, ClassNotFoundException {
     Options op = new Options("conf/engine1.conf");
-    CgiArguments arg = new CgiArguments("query=house&ranker=ql");
+    CgiArguments arg = new CgiArguments("query=house&rankers=ql");
     Indexer indexer = Indexer.Factory.getIndexerByOption(op);
     indexer.loadIndex();
     RankerQl ql = new RankerQl(op, arg, indexer);

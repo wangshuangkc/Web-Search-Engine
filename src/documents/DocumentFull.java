@@ -1,4 +1,5 @@
-package hw1;
+package documents;
+import indexers.IndexerFullScan;
 
 import java.util.Vector;
 

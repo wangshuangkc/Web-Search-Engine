@@ -1,4 +1,4 @@
-package hw1;
+package documents;
 
 /**
  * Document with score.
@@ -6,7 +6,7 @@ package hw1;
  * @author fdiaz
  * @author congyu
  */
-class ScoredDocument implements Comparable<ScoredDocument> {
+public class ScoredDocument implements Comparable<ScoredDocument> {
   private String _query;
   private Document _doc;
   private double _score;

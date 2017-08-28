@@ -1,22 +1,25 @@
-package hw1;
+package rankers;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.Vector;
 
-import hw1.QueryHandler.CgiArguments;
-import hw1.SearchEngine.Options;
+import documents.Document;
+import documents.DocumentFull;
+import documents.ScoredDocument;
+import indexers.Indexer;
+import query.Query;
+import query.QueryHandler.CgiArguments;
+import engine.SearchEngine.Options;
 
 /**
- * @CS2580: Use this template to implement the phrase ranker for HW1.
+ * @CS2580: Use this template to implement the phrase rankers for HW1.
  *
  * @author congyu
  * @author fdiaz
  */
 public class RankerPhrase extends Ranker {
 
-  public RankerPhrase(Options options,
-                      CgiArguments arguments, Indexer indexer) {
+  public RankerPhrase(Options options, CgiArguments arguments, Indexer indexer) {
     super(options, arguments, indexer);
     System.out.println("Using Ranker: " + this.getClass().getSimpleName());
   }

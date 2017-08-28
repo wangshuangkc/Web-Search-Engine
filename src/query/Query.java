@@ -1,4 +1,4 @@
-package hw1;
+package query;
 
 import java.util.Scanner;
 import java.util.Vector;

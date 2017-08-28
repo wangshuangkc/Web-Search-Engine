@@ -1,26 +1,22 @@
-package hw1;
+package rankers;
 
 import java.util.Collections;
 import java.util.Vector;
 
-import hw1.QueryHandler.CgiArguments;
-import hw1.SearchEngine.Options;
+import documents.Document;
+import documents.ScoredDocument;
+import query.QueryHandler.CgiArguments;
+import engine.SearchEngine.Options;
+import indexers.Indexer;
+import query.Query;
 
-/**
- * @CS2580: Use this template to implement the linear ranker for HW1. You must
- * use the provided _betaXYZ for combining the signals.
- *
- * @author congyu
- * @author fdiaz
- */
 public class RankerLinear extends Ranker {
   private float _betaCosine = 1.0f;
   private float _betaQl = 1.0f;
   private float _betaPhrase = 1.0f;
   private float _betaNumviews = 1.0f;
 
-  public RankerLinear(Options options,
-                      CgiArguments arguments, Indexer indexer) {
+  public RankerLinear(Options options, CgiArguments arguments, Indexer indexer) {
     super(options, arguments, indexer);
     System.out.println("Using Ranker: " + this.getClass().getSimpleName());
     _betaCosine = options._betaValues.get("beta_cosine");

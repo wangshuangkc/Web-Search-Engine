@@ -1,4 +1,4 @@
-package hw1;
+package engine;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,30 +9,11 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 
 import com.sun.net.httpserver.HttpServer;
+import indexers.Indexer;
+import query.QueryHandler;
 
 /**
- * This is the main entry class for the Search Engine.
- *
- * Usage (must be running from the parent directory of src):
- *  0) Compiling
- *   javac src/edu/nyu/cs/cs2580/*.java
- *  1) Indexing
- *   java -cp src edu.nyu.cs.cs2580.SearchEngine \
- *     --mode=index --options=conf/engine.conf
- *  2) Serving
- *   java -cp src -Xmx256m edu.nyu.cs.cs2580.SearchEngine \
- *     --mode=serve --port=[port] --options=conf/engine.conf
- *  3) Searching
- *   http://localhost:[port]/search?query=web&ranker=fullscan&format=text
- *
- * @CS2580:
- * You must ensure your program runs with maximum heap memory size -Xmx512m.
- * You must use a port number 258XX, where XX is your group number.
- *
- * Students do not need to change this class except to add server options.
- *
- * @author congyu
- * @author fdiaz
+ * Main entry class for the Search Engine.
  */
 public class SearchEngine {
 
@@ -42,7 +23,6 @@ public class SearchEngine {
    */
   public static class Options {
     // The parent path where the corpus resides.
-    // HW1: We have only one file, corpus.csv.
     public String _corpusPrefix = null;
 
     // The parent path where the constructed index resides.
@@ -55,15 +35,9 @@ public class SearchEngine {
     private static final String[] BETA_PARAMS = {
         "beta_cosine", "beta_ql", "beta_phrase", "beta_numviews"
     };
+
     public Map<String, Float> _betaValues;
 
-    // Additional group specific configuration can be added below.
-
-    /**
-     * Constructor for options.
-     * @param optionsFile where all the options must reside
-     * @throws IOException
-     */
     public Options(String optionsFile) throws IOException {
       // Read options from the file.
       BufferedReader reader = new BufferedReader(new FileReader(optionsFile));
@@ -119,6 +93,7 @@ public class SearchEngine {
     INDEX,
     SERVE,
   };
+
   public static Mode MODE = Mode.NONE;
 
   public static int PORT = -1;
@@ -147,8 +122,6 @@ public class SearchEngine {
         "Must provide a valid port number (258XX) in serve mode!");
     Check(OPTIONS != null, "Must provide options!");
   }
-
-  ///// Main functionalities start
 
   private static void startIndexing() throws IOException {
     Indexer indexer = Indexer.Factory.getIndexerByOption(SearchEngine.OPTIONS);

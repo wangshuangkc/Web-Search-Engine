@@ -1,19 +1,18 @@
-package hw1;
+package rankers;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-import hw1.QueryHandler.CgiArguments;
-import hw1.SearchEngine.Options;
+import documents.Document;
+import documents.DocumentFull;
+import documents.ScoredDocument;
+import indexers.Indexer;
+import query.Query;
+import query.QueryHandler.CgiArguments;
+import engine.SearchEngine.Options;
 
-/**
- * @CS2580: Use this template to implement the cosine ranker for HW1.
- *
- * @author congyu
- * @author fdiaz
- */
 public class RankerCosine extends Ranker {
 
   public RankerCosine(Options options, CgiArguments arguments, Indexer indexer) {
